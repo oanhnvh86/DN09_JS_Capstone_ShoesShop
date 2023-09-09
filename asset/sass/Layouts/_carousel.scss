@@ -1,0 +1,20 @@
+.carousel {
+    position: relative;
+}
+.carousel__text{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-60%);
+    color: white;
+    text-align: left;
+}
+.carousel__text h1 {
+    @include styleText($fs-160, $fw-900, $color-yellow);
+    font-family: "Poppins", sans-serif;
+}
+
+.carousel__text p {
+    @include styleText($fs-46, $fw-500, $color-white-0);
+    font-family: "Poppins", sans-serif;
+}

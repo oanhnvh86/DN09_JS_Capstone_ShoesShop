@@ -1,0 +1,20 @@
+.cardShoe{
+    box-shadow: 6px 6px 12px $color-white-0, -6px -6px 12px $color-gray-0;
+    background-color: $color-gray-1;
+    border: none;
+    padding: 30px;
+    margin-bottom: $mg-30;
+    img{
+        box-shadow: 6px 6px 12px $color-white-0, -6px -6px 12px $color-gray-0;
+        border-radius: $bd-2;
+    }
+    .cardShoe__title{
+       @include styleText($fs-20,$fw-700,$color-green-0);
+    }
+    .cardShoe__text{
+        @include styleText($fs-14,$fw-400,$color-gray-4)
+    }
+    .cardShoe__rating{
+        color: $color-yellow;
+    }
+}
