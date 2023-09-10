@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Register</h1>
+    <form>
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label for="">Email:</label>
+                    <input type="text" class="form-control" id="inpEmail" placeholder="">
+                    <span class="sp-thongbao" id="tbEmail"></span>
+                </div>
+                <div class="form-group">
+                    <label for="">password</label>
+                    <input type="password" class="form-control  mb-2" id="inpPassword" placeholder="">
+                    <span class="sp-thongbao" id="tbPassword"></span>
+                </div>
+                <div class="form-group">
+                    <label for="">password confirm</label>
+                    <input type="password" class="form-control  mb-2" id="inpPasswordConfirm"
+                        placeholder="">
+                    <span class="sp-thongbao" id="tbPasswordConfirm"></span>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="form-group">
+                    <label for="">name:</label>
+                    <input type="text" class="form-control" id="inpName" placeholder="">
+                    <span class="sp-thongbao" id="tbName"></span>
+                </div>
+                <div class="form-group">
+                    <label for="">phone</label>
+                    <input type="number" class="form-control  mb-2" id="inpPhone" placeholder="">
+                    <span class="sp-thongbao" id="tbPhone"></span>
+                </div>
+                <div class="form-group">
+                    <label for="">Gender</label>
+                    <ul>
+                        <li class="type">
+                            <input id="genderMale" type="radio" name="selector">
+                            <label for="genderMale">Male</label>
+                            <!-- <div class="check"></div> -->
+                        </li>
+
+                        <li class="type">
+                            <input id="genderFemale" type="radio" name="selector">
+                            <label for="genderFemale">Female</label>
+                            <!-- <div class="check"></div> -->
+                        </li>
+                    </ul>
+                    <span class="sp-thongbao" id="tbGender"></span>
+                </div>
+
+                <div class="form-group">
+                    <button id="btnRegister" type="button" class="btn btn-primary rounded-pill px-5">Submit</button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="../model/validation.js"></script>
+    <script src="../services/process_API.js"></script>
+    <script src="../controller/register.js"></script>
+</body>
+
+</html>

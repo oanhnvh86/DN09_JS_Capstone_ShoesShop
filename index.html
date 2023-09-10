@@ -36,8 +36,12 @@
                         <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                     </div>
                     <div class="topHeaderRight col-lg-9 justify-content-end">
-                        <a href="#"><i class="fa-solid fa-right-to-bracket"></i></a>
+                        <a href="./view/login.html" target="_blank"><i class="fa-solid fa-right-to-bracket"></i></a>
                         <a href="#"><i class="fa-solid fa-circle-user"></i></a>
+                        <a href="./view/cart.html">
+                            <i class="fa fa-cart-arrow-down"></i>
+                            <p class="cart__text">0</p>
+                        </a>
                     </div>
                 </div>
 
@@ -727,6 +731,42 @@
         </div>
     </section>
     <div class="blog"></div>
+    <!-- Cart  -->
+    <!-- <section class="cart">
+
+        <div class="closeDIV">
+            <p class="close">Cloes</p>
+        </div>
+
+        <h2>Cart</h2>
+        <form action="">
+            <table class="table table-bordered table-hover myTable">
+                <thead class="text-primary">
+                    <tr>
+                        <th>id</th>
+                        <th>img</th>
+                        <th>name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>									
+                    </tr>
+                </thead>
+                <tbody id="tableDanhSach">
+        
+                </tbody>
+            </table>
+            <div class="price-total">
+                <p>Tổng tiền: <span id="tienThanhToan"></span><span>.000 đ</span></p>
+            </div>
+            <button type="button" class="btn btn-light" onclick="chotDon()">Chốt đơn</button>
+        </form>
+        <div class="my-5">
+            <p class="alert alert-success tbThanhToan"
+                style="display: none; color: rgb(32, 161, 32); font-size: 20px; font-weight: 500;">Thanh toán thành công
+            </p>
+        </div>
+
+    </section> -->
     <footer class="mt-3">
         <div class="footer__top">
             <div class="container">
@@ -812,10 +852,10 @@
 
     <!-- main js  -->
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="./model/Shoes.js"></script>
-    <script src="./services/callAPI.js"></script>
-    <!-- <script src="./controller/detail.js"></script> -->
-    <script src="./controller/main.js"></script>
+    <script src="./model/product.js"></script>
+    <script src="./model/product_method.js"></script>
+    <script src="./services/process_API.js"></script>
+    <script src="./controller/index.js"></script>
     
 </body>
 
