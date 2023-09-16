@@ -1,11 +1,12 @@
 .cardShoe{
-    box-shadow: 6px 6px 12px $color-white-0, -6px -6px 12px $color-gray-0;
-    background-color: $color-gray-1;
-    border: none;
+    // box-shadow: 6px 6px 12px $color-white-0, -6px -6px 12px $color-gray-0;
+    // background-color: $color-gray-1;
+    border: 1px solid #8080801f;
     padding: 30px;
     margin-bottom: $mg-30;
     img{
-        box-shadow: 6px 6px 12px $color-white-0, -6px -6px 12px $color-gray-0;
+        // box-shadow: 6px 6px 12px $color-white-0, -6px -6px 12px $color-gray-0;
+        background-color: #eaeaea;
         border-radius: $bd-2;
     }
     .cardShoe__title{

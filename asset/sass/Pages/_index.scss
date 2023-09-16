@@ -1,0 +1,19 @@
+.product-gallery{
+    padding-top: $pd-40;
+    @include styleText($fs-20, $fw-400,$color-gray-0);
+
+    .title{
+        @include styleText($fs-24, $fw-900, #222222);
+        margin-bottom: $mg-10;
+    }
+
+    .sub-title{
+        padding-bottom: $pd-30;
+        
+    }
+
+    .btn-primary {
+        background-color: #87b106;
+        border: none;
+    }
+}
