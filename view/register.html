@@ -4,72 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register Page</title>
+     <!-- BS 4.6  -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+     integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!-- main css  -->
+     <link rel="stylesheet" href="../asset/css/main.css">
 </head>
 
 <body>
-    <h1>Register</h1>
-    <form>
-        <div class="row">
-            <div class="col-12 col-md-6">
-                <div class="form-group">
-                    <label for="">Email:</label>
-                    <input type="text" class="form-control" id="inpEmail" placeholder="">
-                    <span class="sp-thongbao" id="tbEmail"></span>
-                </div>
-                <div class="form-group">
-                    <label for="">password</label>
-                    <input type="password" class="form-control  mb-2" id="inpPassword" placeholder="">
-                    <span class="sp-thongbao" id="tbPassword"></span>
-                </div>
-                <div class="form-group">
-                    <label for="">password confirm</label>
-                    <input type="password" class="form-control  mb-2" id="inpPasswordConfirm"
-                        placeholder="">
-                    <span class="sp-thongbao" id="tbPasswordConfirm"></span>
-                </div>
+    <section class="register">
+        <div class="container registerContent ">
+            <div class="registerHeader">
+                <h1>Register</h1>
             </div>
+            <form>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group input-group nm-gp">
+                            <span class="ficon"><i class="fas fa-envelope-open"></i></span>
+                            <input type="text" class="form-control" id="inpEmail" placeholder="Email" tabindex="1">
+                            <span class="sp-thongbao" id="tbEmail"></span>
+                        </div>
+                        <div class="form-group input-group nm-gp">
+                            <span class="ficon"><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control  mb-2" id="inpPassword" placeholder="Password" tabindex="2">
+                            <span class="sp-thongbao" id="tbPassword"></span>
+                        </div>
+                        <!-- <div class="form-group">
+                            <span><i class="fas fa-lock"></i></span>
+                            <input type="password" class="form-control  mb-2" id="inpPasswordConfirm"
+                                placeholder="password confirm">
+                            <span class="sp-thongbao" id="tbPasswordConfirm"></span>
+                        </div> -->
+                        <div class="form-group input-group nm-gp">
+                            <span class="ficon"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" id="inpName" placeholder="UserName" tabindex="3">
+                            <span class="sp-thongbao" id="tbName"></span>
+                        </div>
+                        <div class="form-group input-group nm-gp">
+                            <span class="ficon"><i class="fa fa-phone"></i></span>
+                            <input type="number" class="form-control  mb-2" id="inpPhone" placeholder="Phone" tabindex="4">
+                            <span class="sp-thongbao" id="tbPhone"></span>
+                        </div>
+                        <div class="form-group input-group nm-gp" tabindex="5">
+                            <fieldset>
+                                <legend class="fgender">Gender</legend>
+                                <div>
+                                    <input id="genderMale" type="radio" name="gender" value="true">
+                                    <label for="genderMale">Male</label>
+                                    <input id="genderFemale" type="radio" name="gender" value="false">
+                                    <label for="genderFemale">Female</label>
+                                </div>
+                                <span class="sp-thongbao" id="tbGender"></span>
+                            </fieldset>
+                        </div>
 
-            <div class="col-12 col-md-6">
-                <div class="form-group">
-                    <label for="">name:</label>
-                    <input type="text" class="form-control" id="inpName" placeholder="">
-                    <span class="sp-thongbao" id="tbName"></span>
+                        <div class="form-group">
+                            <button id="btnRegister" type="button" class="btn btn-primary rounded-pill px-5 w-100" tabindex="6">Register</button>
+                            <div style="color: #97a4af; text-align: center;margin-top: 2rem; font-weight:  400; font-size: 0.75rem;">Already have an account? 
+                                <a class="nm-fs-1 nm-fw-bd" style="font-size: 0.75rem;" href="login.html">Login</a></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="">phone</label>
-                    <input type="number" class="form-control  mb-2" id="inpPhone" placeholder="">
-                    <span class="sp-thongbao" id="tbPhone"></span>
-                </div>
-                <div class="form-group">
-                    <label for="">Gender</label>
-                    <ul>
-                        <li class="type">
-                            <input id="genderMale" type="radio" name="selector">
-                            <label for="genderMale">Male</label>
-                            <!-- <div class="check"></div> -->
-                        </li>
-
-                        <li class="type">
-                            <input id="genderFemale" type="radio" name="selector">
-                            <label for="genderFemale">Female</label>
-                            <!-- <div class="check"></div> -->
-                        </li>
-                    </ul>
-                    <span class="sp-thongbao" id="tbGender"></span>
-                </div>
-
-                <div class="form-group">
-                    <button id="btnRegister" type="button" class="btn btn-primary rounded-pill px-5">Submit</button>
-                </div>
-            </div>
+            </form>
         </div>
-
-    </form>
+    </section>
+    <!-- BS 4.6  -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+        crossorigin="anonymous"></script>
+    <!-- Axios  -->
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="../model/validation.js"></script>
-    <script src="../services/process_API.js"></script>
-    <script src="../controller/register.js"></script>
+    <!-- Main Script  -->
+    <!-- <script src="../model/validation.js"></script> -->
+    <!-- <script src="../services/process_API.js"></script> -->
+    <!-- <script src="../controller/register.js"></script> -->
 </body>
 
 </html>

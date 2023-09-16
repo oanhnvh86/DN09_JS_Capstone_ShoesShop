@@ -102,4 +102,122 @@ footer ul li {
 footer ul li a {
   font-size: 16px;
   color: #999999;
+}
+
+.register {
+  background-image: url(../img/bgSingUpIn.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.register .registerContent {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 3rem 0 rem;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+}
+.register .registerContent .registerHeader {
+  background: linear-gradient(90deg, #007bff, #0052ea);
+  box-shadow: 0 4px 20px 0 rgba(0, 123, 255, 0.14), 0 7px 10px -5px rgba(0, 82, 234, 0.4);
+  margin: -3rem -1rem 2rem;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: #fff;
+}
+.register .registerContent .nm-gp {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.register .registerContent .ficon {
+  color: #007bff;
+  font-size: 1rem;
+  padding-top: 5px;
+  margin-right: 5px;
+  line-height: 2.2rem;
+}
+.register .registerContent .fgender {
+  color: #007bff;
+  font-size: 1rem;
+}
+.register .registerContent .form-control {
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.0625rem solid #eeeeff;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #1e2022;
+  padding: 0.75rem 1.5rem;
+  height: 3.225rem;
+}
+.register .registerContent .input-group .form-control {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 0;
+}
+
+.Login {
+  background-image: url(../img/bgSingUpIn.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Login .loginContent {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 3rem 0 rem;
+  box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.14);
+}
+.Login .loginContent .loginHeader {
+  background: linear-gradient(90deg, #007bff, #0052ea);
+  box-shadow: 0 4px 20px 0 rgba(0, 123, 255, 0.14), 0 7px 10px -5px rgba(0, 82, 234, 0.4);
+  margin: -3rem -1rem 2rem;
+  padding: 1rem;
+  text-align: center;
+  border-radius: 0.5rem;
+  color: #fff;
+}
+.Login .loginContent .nm-gp {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.Login .loginContent .ficon {
+  color: #007bff;
+  font-size: 1rem;
+  padding-top: 5px;
+  margin-right: 5px;
+  line-height: 2.2rem;
+}
+.Login .loginContent .form-control {
+  background-color: transparent;
+  border: none;
+  border-bottom: 0.0625rem solid #eeeeff;
+  border-radius: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #1e2022;
+  padding: 0.75rem 1.5rem;
+  height: 3.225rem;
+}
+.Login .loginContent .input-group .form-control {
+  position: relative;
+  flex: 1 1 auto;
+  width: 1%;
+  min-width: 0;
 }/*# sourceMappingURL=main.css.map */

@@ -1,4 +1,4 @@
-.register {
+.Login {
     background-image: url(../img/bgSingUpIn.jpg);
     background-position: center;
     background-size: cover;
@@ -9,7 +9,7 @@
     align-items: center;
     justify-content: center;
     
-    .registerContent{
+    .loginContent{
         width: 400px;
         background-color: $color-white-0;
         border-radius: 0.5rem;
@@ -17,7 +17,7 @@
         margin: 3rem 0 rem;
         box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
 
-        .registerHeader{
+        .loginHeader{
             background: linear-gradient(90deg,#007bff,#0052ea);
             box-shadow: 0 4px 20px 0 rgba(0,123,255,.14), 0 7px 10px -5px rgba(0,82,234,.4);
             margin: -3rem -1rem 2rem;
@@ -41,10 +41,10 @@
             
         }
 
-        .fgender{
-            color: #007bff;
-            font-size: 1rem;
-        }
+        // .fgender{
+        //     color: #007bff;
+        //     font-size: 1rem;
+        // }
 
         .form-control {
             background-color: transparent;
