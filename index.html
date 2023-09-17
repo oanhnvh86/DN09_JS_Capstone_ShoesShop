@@ -26,7 +26,7 @@
 
 <body>
     <!-- 1.Header  -->
-    <header>
+    <header id = "scrollTopID">
         <div class="container">
             <div class="topHeader">
                 <div class="row">
@@ -41,7 +41,7 @@
                         <a href="#"><i class="fa-solid fa-circle-user"></i></a>
                         <a href="./view/cart.html">
                             <i class="fa fa-cart-arrow-down"></i>
-                            <p class="cart__text">0</p>
+                            <!-- <p class="cart__text">0</p> -->
                         </a>
                     </div>
                 </div>
@@ -81,7 +81,7 @@
                                 <a class="nav-link" href="#">Contact</a>
                             </li>
                         </ul>
-                        <div class="pj_header__mode">
+                        <!-- <div class="pj_header__mode">
                             <div class="pj_header__search">
                                 <a href="#"><i class="fa-solid fa-magnifying-glass" id="aClickSearch"></i></a>
                                 <form id="inpClickSearch" action="">
@@ -94,7 +94,7 @@
                                 <i class="fa-regular fa-sun"></i>
                             </div>
 
-                        </div>
+                        </div> -->
                     </div>
                 </nav>
 
@@ -117,7 +117,7 @@
                         <h1 class="animate__animated animate__flipInX animate__delay-1s">New</h1>
                         <p class="animate__animated animate__fadeInDown animate__delay-0.5s">Sports Sneakers </p>
                         <p class="animate__animated animate__fadeInDown animate__delay-0.5s">Men's like Flex</p>
-                        <button class="button animate__animated animate__fadeInUp animate__delay-1s">Shop Now</button>
+                        <button class="button animate__animated animate__fadeInUp animate__delay-1s btnShopNow">Shop Now</button>
                     </div>
                 </div>
                 <div class="carousel-item">
@@ -126,7 +126,7 @@
                         <h1 class="animate__animated animate__flipInX animate__delay-1s">New</h1>
                         <p class="animate__animated animate__fadeInDown animate__delay-0.5s">Sports Sneakers </p>
                         <p class="animate__animated animate__fadeInDown animate__delay-0.5s">Men's like Flex</p>
-                        <button class="button animate__animated animate__fadeInUp animate__delay-1s">Shop Now</button>
+                        <button class="button animate__animated animate__fadeInUp animate__delay-1s btnShopNow">Shop Now</button>
                     </div>
                 </div>
             </div>
@@ -818,6 +818,11 @@
         </div>
     </footer>
 
+     <!-- BACK TO TOP  -->
+     <a href="#" class="backToTop cd-top text-replace js-cd-top">
+        <i class="fa-solid fa-angle-up"></i>
+    </a>
+
     <!-- BS 4.6  -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -832,6 +837,10 @@
     <script src="./model/product_method.js"></script>
     <script src="./services/process_API.js"></script>
     <script src="./controller/index.js"></script>
+    <script src="./controller/scroll.js"></script>
+    <!-- BackToTop  -->
+    <script src="./asset/sass/Vendors/backToTop/util.js"></script>
+    <script src="./asset/sass/Vendors/backToTop/main.js"></script>
     
 </body>
 

@@ -45,30 +45,40 @@ header {
   background-color: transparent;
   transition: all 0.3s ease;
 }
-
-.topHeader {
+header .topHeader {
   color: #fff;
+  height: 50px;
 }
-
-.topHeader a {
+header .topHeader a {
   color: #fff;
   margin: 10px;
 }
-
-.topHeaderRight {
+header .topHeader .topHeaderRight {
   text-align: right;
 }
-
-.topHeaderRight a {
+header .topHeader .topHeaderRight a {
   color: #fff;
   margin-left: 10px;
+}
+header .menu .navbar {
+  display: flex;
+  justify-content: space-between;
+}
+header .menu .navbar .pj_header__logo {
+  width: 50%;
+}
+header .menu .navbar .nav-item {
+  font-size: 20px;
+}
+
+.changeStyle {
+  background-color: #87b106;
 }
 
 .carousel {
   position: relative;
 }
-
-.carousel__text {
+.carousel .carousel__text {
   position: absolute;
   width: 100%;
   top: 50%;
@@ -76,19 +86,27 @@ header {
   color: white;
   text-align: left;
 }
-
-.carousel__text h1 {
+.carousel .carousel__text h1 {
   font-size: 160px;
   font-weight: 900;
   color: #faec07;
   font-family: "Poppins", sans-serif;
 }
-
-.carousel__text p {
+.carousel .carousel__text p {
   font-size: 46px;
   font-weight: 500;
   color: #fff;
   font-family: "Poppins", sans-serif;
+}
+.carousel .carousel__text .btnShopNow {
+  color: #fff;
+  font-size: 20px;
+  height: 50px;
+  font-weight: 700;
+  padding: 0 35px;
+  border-radius: 50px;
+  background-color: #87b106;
+  border: none;
 }
 
 footer {
@@ -150,6 +168,28 @@ footer .footer__info ul li {
 footer .footer__info ul li a {
   font-size: 16px;
   color: #999999;
+}
+
+.backToTop {
+  display: block;
+  width: 50px;
+  height: 50px;
+  background-color: #87b106;
+  border-radius: 50%;
+  box-shadow: -4px 4px 24px -10px var(--primary-color);
+  color: white;
+  font-size: 13px;
+  line-height: 53px;
+  text-align: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  transition: all 0.2s;
+  opacity: 0;
+}
+
+.cd-top--is-visible {
+  opacity: 1;
 }
 
 .product-gallery {

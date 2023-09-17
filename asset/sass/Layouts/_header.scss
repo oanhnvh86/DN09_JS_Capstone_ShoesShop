@@ -8,22 +8,59 @@ header {
     padding: $pd-10 0;
     background-color: transparent;
     transition: all .3s ease;
+
+    .topHeader{
+        color: $color-white-0;
+        height: 50px;
+
+        a {
+            color: $color-white-0;
+            margin: $mg-10;
+        }
+
+        .topHeaderRight {
+            text-align: right;
+
+            a{
+                color: $color-white-0;
+                margin-left: $mg-10;
+            
+            }
+        }
+    }
+
+    .menu{
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+
+            .pj_header__logo{
+                width: 50%;
+            }
+
+            .nav-item{
+                font-size: $fs-20;
+            }
+        }
+    }
+
 }
 
-.topHeader{
-    color: $color-white-0;
+.changeStyle{
+    background-color: $color-green-0;
+    // height: 100%;
+    // width: 100%;
+    // .topHeader{
+    //     color: green;
+    //     a {
+    //         color: #787592;
+    //     }
+
+    //     .topHeaderRight {
+    //         a{
+    //             color: $color-white-0;
+    //         }
+    //     }
+    // }
 }
 
-.topHeader a {
-    color: $color-white-0;
-    margin: $mg-10;
-}
-
-.topHeaderRight {
-    text-align: right;
-}
-.topHeaderRight a{
-    color: $color-white-0;
-    margin-left: $mg-10;
-
-}
