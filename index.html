@@ -37,12 +37,21 @@
                         <a href="#"><i class="fa-brands fa-pinterest"></i></a>
                     </div>
                     <div class="topHeaderRight col-lg-9 justify-content-end">
-                        <a href="./view/login.html" target="_blank"><i class="fa-solid fa-right-to-bracket"></i></a>
-                        <a href="#"><i class="fa-solid fa-circle-user"></i></a>
-                        <a href="./view/cart.html">
-                            <i class="fa fa-cart-arrow-down"></i>
-                            <!-- <p class="cart__text">0</p> -->
+                        <a href="./view/login.html" target="_blank" class="LoginWrap" >
+                            <i class="fa-solid fa-right-to-bracket"></i>
                         </a>
+                        <a href="#" class = "UserWrap">
+                            <i class="fa-solid fa-circle-user"></i>
+                            <span class="userInfo" id="txtUser"></span>
+                        </a>
+                        <a href="./view/cart.html" class="cartWrap">
+                            <i class="fa fa-cart-arrow-down"></i>
+                            <span class="cartNo">0</span>
+                        </a>
+                        <a href="./index.html"  onclick="logOut()" class="LogoutWrap">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                        </a>
+                    
                     </div>
                 </div>
 
@@ -836,8 +845,10 @@
     <script src="./model/product.js"></script>
     <script src="./model/product_method.js"></script>
     <script src="./services/process_API.js"></script>
-    <script src="./controller/index.js"></script>
+    <script src="./controller/logout.js"></script>
     <script src="./controller/scroll.js"></script>
+    <script src="./controller/index.js"></script>
+    
     <!-- BackToTop  -->
     <script src="./asset/sass/Vendors/backToTop/util.js"></script>
     <script src="./asset/sass/Vendors/backToTop/main.js"></script>

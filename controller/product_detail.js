@@ -11,6 +11,27 @@ window.onload = function () {
     const urlParams = new URLSearchParams(window.location.search);
     const prdID = urlParams.get('productid')
 
+    // let userLogin = JSON.parse(localStorage.getItem("email"));
+    // document.querySelector("#txtUser").innerHTML = userLogin;
+
+    TotalProductInCart();
+
+    //! Load User Info
+    function UserInfo(){
+        if (localStorage.getItem("token") != null) {
+            let userLogin = JSON.parse(localStorage.getItem("email"));
+            document.querySelector("#txtUser").innerHTML = userLogin;
+            document.querySelector(".LoginWrap").style.display = "none";
+            document.querySelector(".LogoutWrap").style.display = "inline";
+        }
+        else
+        {
+            document.querySelector(".LoginWrap").style.display = "inline";
+            document.querySelector(".LogoutWrap").style.display = "none";
+        }
+    }
+    UserInfo();
+
     //! 1.Thông tin chi tiết của sản phẩm------------------------------------------
     viewProduct(prdID);
    
@@ -154,31 +175,37 @@ function addToCart(id) {
         let prd = result.data.content;
         console.log("Main list Product", prd);
         let sp = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityOrder,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
-       
-        if (products.arrayProduct.length < 0) {
-            products.insertProduct(sp);
-            setLocalSorage();
-
-        } 
-        else {
-            let HaveId = products.arrayProduct.find(function (sp) {
-                return sp.id == prd.id
-            })
-            let spdaCo = { ...HaveId }
-
-            if (prd.id == spdaCo.id) {
-                let quantityUpdate = Number(spdaCo.quantityOrder) + Number(quantityOrder);
-                let spUpdate = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityOrder,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
-
-                products.updateProduct(spUpdate);
+        var stLogin = JSON.parse(localStorage.getItem("token"));
+        if (stLogin !== null) {
+            if (products.arrayProduct.length < 0) {
+                products.insertProduct(sp);
                 setLocalSorage();
 
             } 
             else {
-                products.insertProduct(sp);
-                setLocalSorage();
+                let HaveId = products.arrayProduct.find(function (sp) {
+                    return sp.id == prd.id
+                })
+                let spdaCo = { ...HaveId }
 
+                if (prd.id == spdaCo.id) {
+                    let quantityUpdate = Number(spdaCo.quantityOrder) + Number(quantityOrder);
+                    let spUpdate = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityOrder,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
+
+                    products.updateProduct(spUpdate);
+                    setLocalSorage();
+
+                } 
+                else {
+                    products.insertProduct(sp);
+                    setLocalSorage();
+
+                }
             }
+            TotalProductInCart();
+        }
+        else{
+            alert("Please Login!");
         }
     });
 }
@@ -199,4 +226,14 @@ function descreateQty() {
     }
 
     document.querySelector(".qtyText").value = Qty
+}
+
+//! 6. Total product in cart------------
+function TotalProductInCart()
+{
+    let t = 0;
+    products.arrayProduct.map(function (prd){
+        t += Number(prd.quantity);
+    })
+    document.querySelector(".cartNo").innerHTML = t;
 }

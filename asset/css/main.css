@@ -60,6 +60,37 @@ header .topHeader .topHeaderRight a {
   color: #fff;
   margin-left: 10px;
 }
+header .topHeader .topHeaderRight .UserWrap {
+  position: relative;
+}
+header .topHeader .topHeaderRight .UserWrap .userInfo {
+  top: 20px;
+  right: 50px;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  line-height: 18px;
+  font-size: 10px;
+  color: #fff;
+  border-radius: 50%;
+}
+header .topHeader .topHeaderRight .cartWrap {
+  position: relative;
+}
+header .topHeader .topHeaderRight .cartWrap .cartNo {
+  top: -10px;
+  right: -12px;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  line-height: 18px;
+  font-size: 10px;
+  color: #fff;
+  border-radius: 50%;
+  background-color: #87b106;
+}
 header .menu .navbar {
   display: flex;
   justify-content: space-between;

@@ -16,6 +16,21 @@ function queryELE(query) {
     return document.querySelector(query);
 }
 
+//! Load User Info
+function UserInfo(){
+    if (localStorage.getItem("token") != null) {
+        let userLogin = JSON.parse(localStorage.getItem("email"));
+        document.querySelector("#txtUser").innerHTML = userLogin;
+        document.querySelector(".LoginWrap").style.display = "none";
+        document.querySelector(".LogoutWrap").style.display = "inline";
+    }
+    else
+    {
+        document.querySelector(".LoginWrap").style.display = "inline";
+        document.querySelector(".LogoutWrap").style.display = "none";
+    }
+}
+UserInfo();
 //! 2. Load Product List------------------------------------------
 
 function drawProductList(categoryId,arrayProduct) {
@@ -110,6 +125,7 @@ function setLocalSorage() {
 function getLocalStorage() {
     if (localStorage.getItem("ProductList") != null) {
         products.arrayProduct = JSON.parse(localStorage.getItem("ProductList"));
+        TotalProductInCart();
     }
 
 }
@@ -124,31 +140,52 @@ function addToCart(id) {
         console.log("Main list Product", prd);
         let sp = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityOrder,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
        
-        if (products.arrayProduct.length < 0) {
-            products.insertProduct(sp);
-            setLocalSorage();
-
-        } 
-        else {
-            let HaveId = products.arrayProduct.find(function (sp) {
-                return sp.id == prd.id
-            })
-            let spdaCo = { ...HaveId }
-
-            if (prd.id == spdaCo.id) {
-                let quantityUpdate = Number(spdaCo.quantityOrder) + Number(quantityOrder);
-                let spUpdate = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityOrder,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
-
-                products.updateProduct(spUpdate);
+        var stLogin = JSON.parse(localStorage.getItem("token"));
+        if (stLogin !== null) {
+            if (products.arrayProduct.length < 0) {
+                products.insertProduct(sp);
                 setLocalSorage();
+                console.log ("Empty Product:Insert New", sp);
 
             } 
             else {
-                products.insertProduct(sp);
-                setLocalSorage();
+                let HaveId = products.arrayProduct.find(function (sp) {
+                    return sp.id == prd.id
+                })
+                let spdaCo = { ...HaveId }
+                console.log("HaveId:",HaveId);
+                console.log("spdaCo:",spdaCo);
 
+                if (prd.id == spdaCo.id) {
+                    console.log ("Product Array: Existed Product");
+                    let quantityUpdate = Number(spdaCo.quantityOrder) + Number(quantityOrder);
+                    let spUpdate = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityUpdate,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
+
+                    products.updateProduct(spUpdate);
+                    setLocalSorage();
+
+                } 
+                else {
+                    console.log ("Product Array: New Product");
+                    products.insertProduct(sp);
+                    setLocalSorage();
+
+                }
             }
+            TotalProductInCart();
+        }
+        else{
+            alert("Please Login!");
         }
     });
 }
    
+//! 5. Total product in cart------------
+function TotalProductInCart()
+{
+    let t = 0;
+    products.arrayProduct.map(function (prd){
+        t += Number(prd.quantity);
+    })
+    document.querySelector(".cartNo").innerHTML = t;
+}

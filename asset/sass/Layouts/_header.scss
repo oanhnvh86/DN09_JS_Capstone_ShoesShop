@@ -26,6 +26,47 @@ header {
                 margin-left: $mg-10;
             
             }
+
+            .UserWrap{
+                position: relative;
+
+                .userInfo{
+                    top: 20px;
+                    right: 50px;
+                    position: absolute;
+                    width: 18px;
+                    height: 18px;
+                    text-align: center;
+                    line-height: 18px;
+                    font-size: 10px;
+                    color: #fff;
+                    border-radius: 50%;
+                    // background-color: $color-green-0;
+
+                }
+            }
+
+            .cartWrap{
+                position: relative;
+
+                .cartNo{
+                    top: -10px;
+                    right: -12px;
+                    position: absolute;
+                    width: 18px;
+                    height: 18px;
+                    text-align: center;
+                    line-height: 18px;
+                    font-size: 10px;
+                    color: #fff;
+                    border-radius: 50%;
+                    background-color: $color-green-0;
+                }
+
+               
+            }
+
+            
         }
     }
 

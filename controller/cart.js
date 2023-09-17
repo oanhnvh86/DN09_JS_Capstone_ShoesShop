@@ -22,6 +22,25 @@ function queryELE(query) {
     return document.querySelector(query);
 }
 
+// let userLogin = JSON.parse(localStorage.getItem("email"));
+// document.querySelector("#txtUser").innerHTML = userLogin;
+
+//! Load User Info
+function UserInfo(){
+    if (localStorage.getItem("token") != null) {
+        let userLogin = JSON.parse(localStorage.getItem("email"));
+        document.querySelector("#txtUser").innerHTML = userLogin;
+        document.querySelector(".LoginWrap").style.display = "none";
+        document.querySelector(".LogoutWrap").style.display = "inline";
+    }
+    else
+    {
+        document.querySelector(".LoginWrap").style.display = "inline";
+        document.querySelector(".LogoutWrap").style.display = "none";
+    }
+}
+UserInfo();
+
 //! 2.LocalStorage Process------------------------------------------------------------------------------------------------------
 //Lưu trữ ở Local Storage (trình duyệt web)
 function setLocalStorage() {
@@ -115,6 +134,7 @@ function deleteProduct(id) {
     //Gọi hàm hiển thị
     getLocalStorage();
     TotalAmount();
+    TotalProductInCart();
 }
 
 //! 6.Total Amount--------------------------------------------------------------------
@@ -164,7 +184,7 @@ function increateQuantity(id) {
     setLocalSorage();
     drawProductInCart(products.arrayProduct);
     TotalAmount();
-    
+    TotalProductInCart();
     
 }
 window.decreaseQuantity = decreaseQuantity;
@@ -173,6 +193,18 @@ function decreaseQuantity(id) {
     setLocalSorage();
     drawProductInCart(products.arrayProduct);
     TotalAmount();
+    TotalProductInCart();
     
 }
 
+//! 8. Total product in cart------------
+function TotalProductInCart()
+{
+    let t = 0;
+    products.arrayProduct.map(function (prd){
+        t += Number(prd.quantity);
+    })
+    document.querySelector(".cartNo").innerHTML = t;
+}
+
+TotalProductInCart();

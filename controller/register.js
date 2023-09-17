@@ -1,6 +1,6 @@
 
 const signupButton = document.querySelector("#btnRegister");
-let validation = new validation();
+let validation = new Validation();
 
 function checkValidation(email,password,passwordConfirm,name,gender,phone){
     var isValid = true; // giả sử data đúng hết
@@ -18,7 +18,7 @@ function checkValidation(email,password,passwordConfirm,name,gender,phone){
                         // && validation.checkEmail(inpEmail,"Email không đúng định dạng","tbEmail");
     
     isValid &= validation.checkEmpty(password, "Password không được để trống", "tbPassword") ; 
-    isValid &= validation.checkEmpty(passwordConfirm, "PasswordConfirm không được để trống", "tbPasswordConfirm") ;
+    // isValid &= validation.checkEmpty(passwordConfirm, "PasswordConfirm không được để trống", "tbPasswordConfirm") ;
     isValid &= validation.checkEmpty(name, "Name không được để trống", "tbName")  ;
 
     // isValid &= validation.checkEmpty(inpGender, "Gender không được để trống", "tbGender");
@@ -33,7 +33,8 @@ signupButton.addEventListener("click", (event) => {
     // Nhập dữ liệu đăng ký từ người dùng
     let email = document.querySelector("#inpEmail").value;
     let password = document.querySelector("#inpPassword").value;
-    let passwordConfirm = document.querySelector("#inpPasswordConfirm").value;
+    // let passwordConfirm = document.querySelector("#inpPasswordConfirm").value;
+    let passwordConfirm = password;
     let name = document.querySelector("#inpName").value;
     let gender = "";
     let checkbox = document.getElementsByName("gender")
@@ -62,7 +63,7 @@ signupButton.addEventListener("click", (event) => {
         callAPI_Register(data).then((response) => {
             if (response.status === 200) {
                 // Đăng ký thành công
-                alert("Đăng ký thành công");
+                alert("Register Success!");
                 // console.log(response.data.content.accessToken);
              
 
@@ -70,10 +71,10 @@ signupButton.addEventListener("click", (event) => {
 
             } else {
                 // Đăng ký thất bại
-                alert("Đăng ký thất bại");
+                alert("Register Failed!");
             }
         }).catch((error) => {
-            alert("Đăng ký thất bại")
+            alert("Register Failed!")
             console.log(error);
         });
     }
