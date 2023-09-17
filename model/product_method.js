@@ -79,21 +79,21 @@ function Product_Method() {
         let indexChange = this.arrayProduct.find(function (prd) {
             return prd.productID == productID;
         })
-        indexChange.quantityOrder++
+        indexChange.quantity ++;
         (this.arrayProduct)[(this.arrayProduct).indexOf(indexChange)] = indexChange;
 
 
     }
 
     //TODO: decrease Quantity
-    this.decrease = function (productID) {
+    this.decreaseQuantity = function (productID) {
         let indexChange = this.arrayProduct.find(function (prd) {
             return prd.productID == productID;
         })
-        if (indexChange.quantityOrder > 1) {
-            indexChange.quantityOrder--
+        if (indexChange.quantity > 1) {
+            indexChange.quantity--;
         } else {
-            indexChange.quantityOrder = 1;
+            indexChange.quantity = 1;
         }
         (this.arrayProduct)[(this.arrayProduct).indexOf(indexChange)] = indexChange;
     }

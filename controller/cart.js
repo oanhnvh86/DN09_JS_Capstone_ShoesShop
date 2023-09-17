@@ -81,7 +81,7 @@ function drawProductInCart(products) {
         //string template
         var trELE = `
         <tr>
-            <td>${prd.productID}</td>
+            
             <td class="thumbnail"><img class="img-fluid" src=${prd.image} alt=""></td>
             <td>${prd.productName}</td>
             <td id ="priceID">${prd.price}</td>
@@ -97,6 +97,7 @@ function drawProductInCart(products) {
                 <a href="#" onclick="deleteProduct('${prd.productID}')"><i class="fa-regular fa-trash-can"></i></a>
             </td>
         </tr>`
+        // <td>${prd.productID}</td>
          // <td><div class ="subTotal" onload="SubTotalAmount('${prd.productID}')" ></div></td>
         // content mới = content ban đầu + trELE
         content += trELE;
@@ -181,7 +182,7 @@ window.increateQuantity = increateQuantity;
 function increateQuantity(id) {
     // console.log(id);
     products.increaseQuantity(id);
-    setLocalSorage();
+    setLocalStorage();
     drawProductInCart(products.arrayProduct);
     TotalAmount();
     TotalProductInCart();
@@ -190,7 +191,7 @@ function increateQuantity(id) {
 window.decreaseQuantity = decreaseQuantity;
 function decreaseQuantity(id) {
     products.decreaseQuantity(id);
-    setLocalSorage();
+    setLocalStorage();
     drawProductInCart(products.arrayProduct);
     TotalAmount();
     TotalProductInCart();

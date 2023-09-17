@@ -62,7 +62,7 @@ function drawProductList(categoryId,arrayProduct) {
                         </div>
                         <div>
                             <button class="btnPhone-shadow" onclick="addToCart('${prd.id}')"><i class="fa fa-shopping-cart"></i>
-                                Buy Now</button>
+                                Add to cart</button>
                         </div>
                     </div>
 
@@ -142,23 +142,25 @@ function addToCart(id) {
        
         var stLogin = JSON.parse(localStorage.getItem("token"));
         if (stLogin !== null) {
-            if (products.arrayProduct.length < 0) {
+            if (products.arrayProduct.length <= 0) {
+                console.log ("Empty Product:Insert New", sp);
                 products.insertProduct(sp);
                 setLocalSorage();
-                console.log ("Empty Product:Insert New", sp);
+                
 
             } 
             else {
-                let HaveId = products.arrayProduct.find(function (sp) {
-                    return sp.id == prd.id
+                var HaveId = products.arrayProduct.findIndex(function (sp) {
+                    console.log("SP",sp);
+                    console.log("prd",prd);
+                    console.log("prd.id == sp.productID",prd.id == sp.productID);
+                    return prd.id == sp.productID;
                 })
-                let spdaCo = { ...HaveId }
                 console.log("HaveId:",HaveId);
-                console.log("spdaCo:",spdaCo);
-
-                if (prd.id == spdaCo.id) {
-                    console.log ("Product Array: Existed Product");
-                    let quantityUpdate = Number(spdaCo.quantityOrder) + Number(quantityOrder);
+                if(HaveId>=0) 
+                {
+                    let existedProd = products.viewProduct(sp.id);
+                    let quantityUpdate = Number(existedProd.quantityOrder) + Number(quantityOrder);
                     let spUpdate = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityUpdate,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
 
                     products.updateProduct(spUpdate);
@@ -172,6 +174,30 @@ function addToCart(id) {
 
                 }
             }
+            // else {
+            //     let HaveId = products.arrayProduct.find(function (sp) {
+            //         return sp.id == prd.id
+            //     })
+            //     let spdaCo = { ...HaveId }
+            //     console.log("HaveId:",HaveId);
+            //     console.log("spdaCo:",spdaCo);
+
+            //     if (prd.id == spdaCo.id) {
+            //         console.log ("Product Array: Existed Product");
+            //         let quantityUpdate = Number(spdaCo.quantityOrder) + Number(quantityOrder);
+            //         let spUpdate = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityUpdate,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
+
+            //         products.updateProduct(spUpdate);
+            //         setLocalSorage();
+
+            //     } 
+            //     else {
+            //         console.log ("Product Array: New Product");
+            //         products.insertProduct(sp);
+            //         setLocalSorage();
+
+            //     }
+            // }
             TotalProductInCart();
         }
         else{
