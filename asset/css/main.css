@@ -409,4 +409,54 @@ footer .footer__info ul li a {
   font-size: 24px;
   font-weight: 900;
   color: #222222;
+}
+
+.cartContent {
+  margin-top: 30px;
+}
+.cartContent .myTable thead {
+  background-color: #87b106;
+  color: #fff;
+}
+.cartContent #tblCartList .thumbnail {
+  width: 140px;
+}
+.cartContent #tblCartList td {
+  vertical-align: middle;
+  text-align: center;
+}
+.cartContent #tblCartList .pro-qty {
+  width: 90px;
+  height: 40px;
+  border: 1px solid #ddd;
+  padding: 0 15px;
+  float: left;
+}
+.cartContent #tblCartList .pro-qty .qtybtn {
+  width: 15px;
+  display: block;
+  float: left;
+  line-height: 38px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 22px;
+  font-weight: 400;
+  color: #555555;
+}
+.cartContent #tblCartList .pro-qty .qtyText {
+  width: 28px;
+  float: left;
+  border: none;
+  height: 40px;
+  line-height: 34px;
+  padding: 0;
+  text-align: center;
+  background-color: transparent;
+}
+.cartContent .tongtien {
+  text-align: right;
+  font-weight: 600;
+}
+.cartContent .tongtien .ttNumber {
+  color: #d26b31;
 }/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,60 @@
+.cartContent{
+    margin-top: $mg-30;
+
+    .myTable thead {
+        background-color: $color-green-0;
+        color: $color-white-0;
+    }
+
+    #tblCartList{
+        .thumbnail{
+            width: 140px;
+        }
+        td{
+            vertical-align: middle;
+            text-align: center;
+        }
+
+        .pro-qty{
+            width: 90px;
+            height: 40px;
+            border: 1px solid #ddd;
+            padding: 0 15px;
+            float: left;
+
+            .qtybtn{
+                width: 15px;
+                display: block;
+                float: left;
+                line-height: 38px;
+                cursor: pointer;
+                text-align: center;
+                font-size: 22px;
+                font-weight: 400;
+                color: #555555;
+            }
+            
+            .qtyText{
+                width: 28px;
+                float: left;
+                border: none;
+                height: 40px;
+                line-height: 34px;
+                padding: 0;
+                text-align: center;
+                background-color: transparent;
+            }
+
+        }
+    }
+
+    .tongtien{
+        text-align: right;
+        font-weight: $fw-600;
+
+        .ttNumber{
+            color: #d26b31;
+        }
+    }
+    
+}

@@ -63,26 +63,28 @@ function drawProductInCart(products) {
         var trELE = `
         <tr>
             <td>${prd.productID}</td>
-            <td><img src=${prd.image} alt=""></td>
+            <td class="thumbnail"><img class="img-fluid" src=${prd.image} alt=""></td>
             <td>${prd.productName}</td>
-            <td>${prd.price}</td>
-            <td>
-                <div class="soLuongCart">
-                    <button type="button" onclick="decreaseQuantity('${prd.productID}')" class="btn btn-light">-</button>
-                    <p class="slorder">${prd.quantity}</p>
-                    <button type="button" onclick="increateQuantity('${prd.productID}')" class="btn btn-light">+</button>
+            <td id ="priceID">${prd.price}</td>
+            <td class ="pro-quantity">
+                <div class="pro-qty">
+                    <span class ="dec qtybtn" onclick="decreaseQuantity('${prd.productID}')" >-</span>
+                    <input id ="qtyId"  type="text" class="qtyText" value = ${prd.quantity} ></input>
+                    <span  class ="inc qtybtn"  onclick="increateQuantity('${prd.productID}')" >+</span>
                 </div>
             </td>
+           
             <td>
-                <button class="btn btn-danger" onclick="deleteProduct('${prd.productID}')" >Xóa</button>
+                <a href="#" onclick="deleteProduct('${prd.productID}')"><i class="fa-regular fa-trash-can"></i></a>
             </td>
         </tr>`
+         // <td><div class ="subTotal" onload="SubTotalAmount('${prd.productID}')" ></div></td>
         // content mới = content ban đầu + trELE
         content += trELE;
     })
 
     // console.log(content);
-    queryELE("#tableDanhSach").innerHTML = content;
+    queryELE("#tblCartList").innerHTML = content;
 
 }
 
@@ -127,9 +129,32 @@ function TotalAmount() {
         oder += Number(prd.quantity)
     })
     document.getElementById("tienThanhToan").innerHTML = tong.toLocaleString()
-    document.querySelector(".cart__text").innerHTML = oder;
+    // document.querySelector(".cart__text").innerHTML = oder;
 }
 
+//!SubTotal Amount ------------------------
+// SubTotalAmount(prdID);
+function SubTotalAmount1(prdID) {
+    console.log(prdID);
+    let tong = 0;
+    products.viewProduct(prdID).map(function (prd) {
+        console.log("subtotal:",prd);
+        tong += Number(prd.price) * 1// Number(prd.quantity)
+    })
+    document.getElementById("subTotal").innerHTML = tong.toLocaleString()
+    // document.querySelector(".cart__text").innerHTML = oder;
+}
+
+function SubTotalAmount() {
+    
+    let tong = 0;
+    products.arrayProduct.map(function (prd) {
+        console.log("subtotal:",prd);
+        tong += Number(prd.price) * Number(prd.quantity)
+    })
+    document.getElementsByClassName("subTotal").innerHTML = tong.toLocaleString()
+    // document.querySelector(".cart__text").innerHTML = oder;
+}
 //! 7.Change Quantity--------------------------------------------------------------------
 // render tawng giam soó lượng sp cart 
 window.increateQuantity = increateQuantity;
