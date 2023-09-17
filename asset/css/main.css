@@ -328,4 +328,85 @@ footer .footer__info ul li a {
   flex: 1 1 auto;
   width: 1%;
   min-width: 0;
+}
+
+.productDetail {
+  margin-top: 30px;
+}
+.productDetail .productImg {
+  border: 1px solid rgba(128, 128, 128, 0.1215686275);
+  border-radius: 0.25rem;
+}
+.productDetail .productDetailContent .title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #222222;
+}
+.productDetail .productDetailContent .price {
+  font-size: 24px;
+  font-weight: 700;
+  color: #d26b31;
+}
+.productDetail .productDetailContent .soLuongCart {
+  display: flex;
+  align-items: center;
+}
+.productDetail .productDetailContent .soLuongCart .title {
+  line-height: 1;
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: 10px;
+  text-transform: capitalize;
+}
+.productDetail .productDetailContent .soLuongCart .quantity {
+  margin-right: 15px;
+}
+.productDetail .productDetailContent .soLuongCart .quantity .pro-qty {
+  width: 90px;
+  height: 40px;
+  border: 1px solid #ddd;
+  padding: 0 15px;
+  border-radius: 40px;
+  float: left;
+}
+.productDetail .productDetailContent .soLuongCart .quantity .pro-qty .qtybtn {
+  width: 15px;
+  display: block;
+  float: left;
+  line-height: 40px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+  color: #555555;
+}
+.productDetail .productDetailContent .soLuongCart .quantity .pro-qty input {
+  resize: none;
+  width: 28px;
+  float: left;
+  border: none;
+  height: 40px;
+  line-height: 40px;
+  padding: 0;
+  text-align: center;
+  background-color: transparent;
+}
+.productDetail .productDetailContent .soLuongCart .btn-cart2 {
+  height: 40px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 40px;
+  border-radius: 50px;
+  padding: 0 25px;
+  background-color: #87b106;
+}
+
+.relatedProduct {
+  margin-top: 30px;
+  text-align: center;
+}
+.relatedProduct .title {
+  font-size: 24px;
+  font-weight: 900;
+  color: #222222;
 }/*# sourceMappingURL=main.css.map */

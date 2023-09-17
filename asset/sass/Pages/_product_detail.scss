@@ -1,0 +1,86 @@
+.productDetail{
+    margin-top: $mg-30;
+    .productImg{
+        border: 1px solid rgba(128, 128, 128, 0.1215686275);
+        border-radius: 0.25rem;
+    }
+
+    .productDetailContent{
+        .title{
+            @include styleText($fs-24, $fw-900,$color-black-1);
+        }
+
+        .price{
+            @include styleText($fs-24, $fw-700, #d26b31);
+        }
+
+        .soLuongCart{
+            display: flex;
+            align-items: center;
+            
+            .title{
+                line-height: 1;
+                font-size: 16px;
+                font-weight: 400;
+                margin-right: 10px;
+                text-transform: capitalize;
+            }
+
+            .quantity{
+                margin-right:  15px;
+
+                .pro-qty{
+                    width: 90px;
+                    height: 40px;
+                    border: 1px solid #ddd;
+                    padding: 0 15px;
+                    border-radius: 40px;
+                    float: left;
+
+                    .qtybtn{
+                        width: 15px;
+                        display: block;
+                        float: left;
+                        line-height: 40px;
+                        cursor: pointer;
+                        text-align: center;
+                        font-size: 16px;
+                        color: #555555;
+                    }
+
+                    input{
+                        resize: none;
+                        width: 28px;
+                        float: left;
+                        border: none;
+                        height: 40px;
+                        line-height: 40px;
+                        padding: 0;
+                        text-align: center;
+                        background-color: transparent;
+                    }
+                }
+            }
+
+            .btn-cart2{    
+                height: 40px;
+                color: #fff;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 40px;
+                border-radius: 50px;
+                padding: 0 25px;
+                background-color: #87b106;
+            }
+        }
+    }
+}
+
+.relatedProduct{
+    margin-top: $mg-30;
+    text-align:  center;
+    .title
+    {
+        @include styleText( $fs-24,$fw-900,$color-black-1);
+    }
+}

@@ -9,13 +9,13 @@
  */
 window.onload = function () {
     const urlParams = new URLSearchParams(window.location.search);
-    const myParam = urlParams.get('productid')
+    const prdID = urlParams.get('productid')
 
     //! 1.Thông tin chi tiết của sản phẩm------------------------------------------
-    viewProduct(myParam);
+    viewProduct(prdID);
    
-    function viewProduct(myParam) {
-        console.log(myParam);
+    function viewProduct(prdID) {
+        console.log(prdID);
 
         //C1
         // var promiseObj = axios({
@@ -24,7 +24,7 @@ window.onload = function () {
         // }); // pending
         
         //C2
-        var promiseObj = callAPI_ViewProduct(myParam)
+        var promiseObj = callAPI_ViewProduct(prdID)
 
         promiseObj.then(function (result) {
             //thành công
@@ -39,30 +39,34 @@ window.onload = function () {
         })
     }
 
-    function drawProductDetail(sh) {
+    function drawProductDetail(prd) {
         var content = ""; //string các thẻ tr
         content += `
-            <div class="col-12 col-md-4">
-                        <div class="productImg">
-                            <img src="${sh.image}" class="card-img-top" alt="...">
-                        </div>
+            <div class="col-12 col-md-6">
+                <div class="productImg">
+                    <img src="${prd.image}" class="card-img-top" alt="...">
+                </div>
             </div>
-            <div class="col-12 col-md-8">
-                <div class="productDetail">
-                    <h2>${sh.name}</h2>
-                    <p>${sh.description}</p>
+            <div class="col-12 col-md-6">
+                <div class="productDetailContent">
+                    <h2 class="title">${prd.name}</h2>
+                    <p class="desc">${prd.description}</p>
                     <p>Available size</p>
-                  
-
-                    <p>${sh.price}</p>
+                    <p class="price">$${prd.price}</p>
                     
                     <div class="soLuongCart">
-                        <button type="button" onclick="renderGiam('${sh.id}')" class="btn btn-light">-</button>
-                        <p class="slorder">1</p>
-                        <button type="button" onclick="renderTang('${sh.id}')" class="btn btn-light">+</button>
+                        <h6 class="title">Quantity:</h6>
+                        <div class="quantity">
+                            <div class="pro-qty">
+                                <span class= "dec qtybtn" onclick="descreateQty('${prd.id}')" >-</span>
+                                <input class="qtyText" type="text" value="1">
+                                <span class= "inc qtybtn" onclick="inscreaseQty('${prd.id}')" >+</span>
+                            </div>
+                        </div>
+                        <div class="action_link">
+                            <a class="btn btn-cart2" herf="#" onclick="addToCart('${prd.id}')" > Add To Cart</a>
+                        </div>
                     </div>
-                    
-                    <button onclick="addToCart('${sh.id}')">Add New Card</button>
                 </div>
             </div>
             `
@@ -71,7 +75,7 @@ window.onload = function () {
     }
 
     //! 2.Related Product-------------------------------------------------
-    viewRelatedProducts(myParam);
+    viewRelatedProducts(prdID);
 
     function viewRelatedProducts(id) {
         callAPI_ViewProduct(id).then(function (result) {
@@ -87,22 +91,38 @@ window.onload = function () {
 
     function drawRelatedProducts(mang) {
         var content = "";
-        mang.map(function (sp) {
-            content += `
-            <div class="product-item col-6 col-md-4">
-            <div class="item">
-                <a href="../view/product_detail.html?productid=${sp.id}">
-                    <img src=${sp.image} alt="">
-                </a>
-            </div>
-            <div class="product-item-text">
-                <h1><a href="../views/chiTietSP.html?productid=${sp.id}">${sp.name}</a></h1>
+        mang.map(function (prd) {
+            content += `<div class="col-12 col-md-6 col-lg-4">
+            <div class="card cardShoe">
+                
+                <a href="../view/product_detail.html?productid=${prd.id}" target="_blank"><img src="${prd.image}" class="card-img-top" alt="..." ></a>
+                <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h3 class="cardShoe__title">${prd.name}</h3>
+                            <p class="cardShoe__text">${prd.alias}</p>
+                        </div>
+                        <div>
+                            <h3 class="cardShoe__title">$${prd.price}</h3>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="cardShoe__rating">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div>
+                            <button class="btnPhone-shadow" onclick="addToCart('${prd.id}')"><i class="fa fa-shopping-cart"></i>
+                            Add To Cart</button>
+                        </div>
+                    </div>
 
-                <p><span class="price">${sp.price}</span>.000 đ</p>
+                </div>
             </div>
-
-        </div>
-        `
+        </div>`
         })
         document.getElementById("relatedProductContent").innerHTML = content;
     }
@@ -129,7 +149,7 @@ getLocalStorage() ;
 
 //! 4.Add to cart--------------------------
 function addToCart(id) {
-    var quantityOrder = document.querySelector(".slorder").value;
+    var quantityOrder = document.querySelector(".qtyText").value;
     callAPI_ViewProduct(id).then((result) => {
         let prd = result.data.content;
         console.log("Main list Product", prd);
@@ -161,4 +181,22 @@ function addToCart(id) {
             }
         }
     });
+}
+
+//!5 General Increas Descrea Quantity
+function inscreaseQty() {
+    let curQty = Number(document.querySelector(".qtyText").value)
+    let Qty = curQty + 1;
+    document.querySelector(".qtyText").value = Qty;
+}
+function descreateQty() {
+    let Qty = 0;
+    let curQty = Number(document.querySelector(".qtyText").value)
+    if (curQty > 1) {
+        Qty = curQty - 1;
+    } else {
+        Qty = 1;
+    }
+
+    document.querySelector(".qtyText").value = Qty
 }
