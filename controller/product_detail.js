@@ -173,30 +173,39 @@ function addToCart(id) {
     var quantityOrder = document.querySelector(".qtyText").value;
     callAPI_ViewProduct(id).then((result) => {
         let prd = result.data.content;
-        console.log("Main list Product", prd);
+        // console.log("Main list Product", prd);
         let sp = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityOrder,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
+        
         var stLogin = JSON.parse(localStorage.getItem("token"));
         if (stLogin !== null) {
-            if (products.arrayProduct.length < 0) {
+            if (products.arrayProduct.length <= 0) {
+                // console.log ("Empty Product:Insert New", sp);
                 products.insertProduct(sp);
                 setLocalSorage();
 
             } 
             else {
-                let HaveId = products.arrayProduct.find(function (sp) {
-                    return sp.id == prd.id
+                let HaveId = products.arrayProduct.findIndex(function (sp) {
+                    // console.log("SP",sp);
+                    // console.log("prd",prd);
+                    // console.log("prd.id == sp.productID",prd.id == sp.productID);
+                    return sp.productID == prd.id ;
                 })
-                let spdaCo = { ...HaveId }
+                console.log("HaveId:",HaveId);
 
-                if (prd.id == spdaCo.id) {
-                    let quantityUpdate = Number(spdaCo.quantityOrder) + Number(quantityOrder);
-                    let spUpdate = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityOrder,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
-
+                if(HaveId>-1)  
+                {
+                    let existedProd = products.viewProduct(sp.productID);
+                    // console.log("existedProd:",existedProd);
+                    let quantityUpdate = Number(existedProd.quantity) + Number(quantityOrder);
+                    let spUpdate = new Product(prd.id, prd.name,prd.alias,prd.price,prd.description,prd.size,prd.shortDescription, quantityUpdate,prd.deleted,prd.categories,prd.relatedProducts,prd.feature,prd.image); //quantityOrder
+                    // console.log("spUpdate:",spUpdate);
                     products.updateProduct(spUpdate);
                     setLocalSorage();
 
                 } 
                 else {
+                    // console.log ("Product Array: New Product");
                     products.insertProduct(sp);
                     setLocalSorage();
 

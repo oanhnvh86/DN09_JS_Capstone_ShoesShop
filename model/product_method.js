@@ -41,7 +41,7 @@ function Product_Method() {
         //nếu tìm thấy => trả về vị trí tìm được
         //ngược lại => trả về -1
         var indexUpdate = this.arrayProduct.findIndex(function (prd) {
-            return prd.productID == productUpdate.ShoesID
+            return prd.productID == productUpdate.productID;
         });
 
         if (indexUpdate > -1) {
