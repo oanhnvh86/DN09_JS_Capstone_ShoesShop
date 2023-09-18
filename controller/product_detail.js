@@ -11,12 +11,11 @@ window.onload = function () {
     const urlParams = new URLSearchParams(window.location.search);
     const prdID = urlParams.get('productid')
 
-    // let userLogin = JSON.parse(localStorage.getItem("email"));
-    // document.querySelector("#txtUser").innerHTML = userLogin;
-
+    
+    //! 1.Load Total Product In Cart----------------------------------
     TotalProductInCart();
 
-    //! Load User Info
+    //! 2.Load User Info----------------------------------
     function UserInfo(){
         if (localStorage.getItem("token") != null) {
             let userLogin = JSON.parse(localStorage.getItem("email"));
@@ -32,7 +31,7 @@ window.onload = function () {
     }
     UserInfo();
 
-    //! 1.Thông tin chi tiết của sản phẩm------------------------------------------
+    //! 3.Thông tin chi tiết của sản phẩm------------------------------------------
     viewProduct(prdID);
    
     function viewProduct(prdID) {
@@ -95,7 +94,7 @@ window.onload = function () {
         
     }
 
-    //! 2.Related Product-------------------------------------------------
+    //! 4.Related Product-------------------------------------------------
     viewRelatedProducts(prdID);
 
     function viewRelatedProducts(id) {
@@ -109,7 +108,6 @@ window.onload = function () {
         })
     }
     
-
     function drawRelatedProducts(mang) {
         var content = "";
         mang.map(function (prd) {
@@ -150,9 +148,7 @@ window.onload = function () {
     
 }
 
-
-
-//! 3.LocalStorage Process--------------------------
+//! 5.LocalStorage Process--------------------------
 let products = new Product_Method();
 
 function setLocalSorage() {
@@ -163,12 +159,11 @@ function getLocalStorage() {
         products.arrayProduct = JSON.parse(localStorage.getItem("ProductList"));
         // hienThiCart(dssp.mangSP)
     }
-
 }
 
 getLocalStorage() ;
 
-//! 4.Add to cart--------------------------
+//! 6.Add to cart--------------------------
 function addToCart(id) {
     var quantityOrder = document.querySelector(".qtyText").value;
     callAPI_ViewProduct(id).then((result) => {
@@ -182,7 +177,6 @@ function addToCart(id) {
                 // console.log ("Empty Product:Insert New", sp);
                 products.insertProduct(sp);
                 setLocalSorage();
-
             } 
             else {
                 let HaveId = products.arrayProduct.findIndex(function (sp) {
@@ -202,13 +196,11 @@ function addToCart(id) {
                     // console.log("spUpdate:",spUpdate);
                     products.updateProduct(spUpdate);
                     setLocalSorage();
-
                 } 
                 else {
                     // console.log ("Product Array: New Product");
                     products.insertProduct(sp);
                     setLocalSorage();
-
                 }
             }
             TotalProductInCart();
@@ -219,7 +211,7 @@ function addToCart(id) {
     });
 }
 
-//!5 General Increas Descrea Quantity
+//! 7.General Increas Descrea Quantity
 function inscreaseQty() {
     let curQty = Number(document.querySelector(".qtyText").value)
     let Qty = curQty + 1;
@@ -237,7 +229,7 @@ function descreateQty() {
     document.querySelector(".qtyText").value = Qty
 }
 
-//! 6. Total product in cart------------
+//! 8. Total product in cart------------
 function TotalProductInCart()
 {
     let t = 0;

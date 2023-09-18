@@ -1,5 +1,6 @@
-const signinButton = document.querySelector("#btnLogin");
+//! LogIn----------------------
 
+const signinButton = document.querySelector("#btnLogin");
 
 signinButton.addEventListener("click", (event) => {
     
@@ -10,28 +11,24 @@ signinButton.addEventListener("click", (event) => {
         email: email,
         password: password,
     };
-    // Gửi dữ liệu đăng nhập đến API
+    // Call API
     callAPI_Login(data).then((response) => {
         if (response.status === 200) {
-            // Đăng ký thành công
+            // Login Success
             alert("Login Success!");
-
-            console.log("Info Login:",response.data.content);
+            // console.log("Info Login:",response.data.content);
             localStorage.setItem("token", JSON.stringify(response.data.content.accessToken))
             localStorage.setItem("email", JSON.stringify(response.data.content.email))
-            
             window.location.href = "../index.html";
 
         } else {
-            // Đăng ký thất bại
+            // Login Failed
             alert("Login Failed!");
         }
     }).catch((error) => {
         alert("Login Failed!")
         console.log(error);
     });
-    
-
 });
 
 

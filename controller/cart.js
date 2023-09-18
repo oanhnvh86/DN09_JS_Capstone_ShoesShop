@@ -12,8 +12,7 @@
  *      
  */
 
-
-//! 1.Hàm dùng chung và biến toàn cục-------------------------------------------------------------------------------------------------------
+//! 1.Hàm dùng chung và biến toàn cục-------------------------
 let products = new Product_Method();
 let validation = new Validation();
 
@@ -22,10 +21,8 @@ function queryELE(query) {
     return document.querySelector(query);
 }
 
-// let userLogin = JSON.parse(localStorage.getItem("email"));
-// document.querySelector("#txtUser").innerHTML = userLogin;
 
-//! Load User Info
+//! 2.Load User Info------------------------------------------
 function UserInfo(){
     if (localStorage.getItem("token") != null) {
         let userLogin = JSON.parse(localStorage.getItem("email"));
@@ -41,7 +38,7 @@ function UserInfo(){
 }
 UserInfo();
 
-//! 2.LocalStorage Process------------------------------------------------------------------------------------------------------
+//! 3.LocalStorage Process--------------------------------------
 //Lưu trữ ở Local Storage (trình duyệt web)
 function setLocalStorage() {
     //? localStorage: đối tương có sẵn của JS giúp thao tác với local storage
@@ -67,7 +64,7 @@ function getLocalStorage() {
 
 }
 
-//! 3. drawProductInCart---------------------------------------------------------------------------------------------
+//! 4.Draw Product In Cart---------------------------------------------------------------------------------------------
 //Hiển thị danh sách San Pham
 //input:mangSV  , output: chuỗi các thẻ tr(thông tin của 1 obj San Pham) => đưa lên UI
 function drawProductInCart(products) {
@@ -108,14 +105,11 @@ function drawProductInCart(products) {
 
 }
 
-
-//! 4.Load Page--------------------------------------------------------------------------------------------
+//! 5.Load Page-----------------------------------------------------
 //Gọi khi load trang web
 getLocalStorage();
 
-
-
-//! 5.Delete Product--------------------------------------------------------------------------------------------
+//! 6.Delete Product------------------------------------------------
 /**
  * Khối 1: Input: mã San Pham cần xóa
  * 
@@ -138,9 +132,7 @@ function deleteProduct(id) {
     TotalProductInCart();
 }
 
-//! 6.Total Amount--------------------------------------------------------------------
-TotalAmount();
-
+//! 7.Total Amount--------------------------------------------------------------------
 function TotalAmount() {
     let tong = 0;
     let oder = 0;
@@ -150,10 +142,11 @@ function TotalAmount() {
         oder += Number(prd.quantity)
     })
     document.getElementById("tienThanhToan").innerHTML = tong.toLocaleString()
-    // document.querySelector(".cart__text").innerHTML = oder;
 }
 
-//!SubTotal Amount ------------------------
+TotalAmount();
+
+//! 8.SubTotal Amount ------------------------
 // SubTotalAmount(prdID);
 function SubTotalAmount1(prdID) {
     console.log(prdID);
@@ -176,7 +169,8 @@ function SubTotalAmount() {
     document.getElementsByClassName("subTotal").innerHTML = tong.toLocaleString()
     // document.querySelector(".cart__text").innerHTML = oder;
 }
-//! 7.Change Quantity--------------------------------------------------------------------
+
+//! 9.Change Quantity-------------------------------
 // render tawng giam soó lượng sp cart 
 window.increateQuantity = increateQuantity;
 function increateQuantity(id) {
@@ -198,7 +192,7 @@ function decreaseQuantity(id) {
     
 }
 
-//! 8. Total product in cart------------
+//! 10. Total product in cart----------------------
 function TotalProductInCart()
 {
     let t = 0;

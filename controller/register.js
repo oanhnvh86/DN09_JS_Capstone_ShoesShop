@@ -1,7 +1,9 @@
 
+//! 1.Global Variable ------------------------------------
 const signupButton = document.querySelector("#btnRegister");
 let validation = new Validation();
 
+//! 2.Check Validation---------------------------------
 function checkValidation(email,password,passwordConfirm,name,gender,phone){
     var isValid = true; // giả sử data đúng hết
 
@@ -16,21 +18,19 @@ function checkValidation(email,password,passwordConfirm,name,gender,phone){
     isValid &= validation.checkEmpty(email, "Email không được để trống", "tbEmail") ;
                         // && validation.checkID(inpEmail, "Email không được trùng", "tbEmail", dsnv.mangNV)  ??
                         // && validation.checkEmail(inpEmail,"Email không đúng định dạng","tbEmail");
-    
     isValid &= validation.checkEmpty(password, "Password không được để trống", "tbPassword") ; 
     // isValid &= validation.checkEmpty(passwordConfirm, "PasswordConfirm không được để trống", "tbPasswordConfirm") ;
     isValid &= validation.checkEmpty(name, "Name không được để trống", "tbName")  ;
-
     // isValid &= validation.checkEmpty(inpGender, "Gender không được để trống", "tbGender");
     isValid &= validation.checkEmpty(phone, "Phone không được để trống", "tbPhone");
     return isValid;
-
 }
 
+//! 3.Register---------------------------------------
 signupButton.addEventListener("click", (event) => {
     event.preventDefault();
 
-    // Nhập dữ liệu đăng ký từ người dùng
+    // Data Info
     let email = document.querySelector("#inpEmail").value;
     let password = document.querySelector("#inpPassword").value;
     // let passwordConfirm = document.querySelector("#inpPasswordConfirm").value;
@@ -45,11 +45,12 @@ signupButton.addEventListener("click", (event) => {
     }
     let phone = document.querySelector("#inpPhone").value;
     console.log("gender", gender);
+    
     // Kiểm tra tính hợp lệ của dữ liệu
     let isValid = true;
-
     isValid = checkValidation(email,password,passwordConfirm,name,gender,phone);
 
+    // If valid
     if (isValid) {
         let data = {
             email: email,
@@ -59,18 +60,12 @@ signupButton.addEventListener("click", (event) => {
             phone: phone,
         };
 
-        // Gửi dữ liệu đăng nhập đến API
+        // Call API
         callAPI_Register(data).then((response) => {
             if (response.status === 200) {
-                // Đăng ký thành công
                 alert("Register Success!");
-                // console.log(response.data.content.accessToken);
-             
-
                 window.location.href = "../view/login.html";
-
             } else {
-                // Đăng ký thất bại
                 alert("Register Failed!");
             }
         }).catch((error) => {
@@ -78,7 +73,6 @@ signupButton.addEventListener("click", (event) => {
             console.log(error);
         });
     }
-
 });
 
 

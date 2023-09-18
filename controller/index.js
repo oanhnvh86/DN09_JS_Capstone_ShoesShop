@@ -11,12 +11,12 @@
 
 // const gbShoeID = 0;
 
-//! 1. Common Function-------------------------------------------------------
+//! 1.Common Function-------------------------------------------------------
 function queryELE(query) {
     return document.querySelector(query);
 }
 
-//! Load User Info
+//! 2.Load User Info + Enable/Disable Login/Logout--------------------------
 function UserInfo(){
     if (localStorage.getItem("token") != null) {
         let userLogin = JSON.parse(localStorage.getItem("email"));
@@ -31,10 +31,10 @@ function UserInfo(){
     }
 }
 UserInfo();
-//! 2. Load Product List------------------------------------------
 
+//! 3.Load Product List Via API----------------------------------------------------
 function drawProductList(categoryId,arrayProduct) {
-    var content = ""; //string các thẻ tr
+    let content = ""; //string các thẻ tr
 
     arrayProduct.map(function (prd) {
         content += `
@@ -115,8 +115,7 @@ getProductListByCategory("ADIDAS");
 getProductListByCategory("WOMEN");
 getProductListByCategory("MEN");
 
-//! 3.LocalStorage Process
-
+//! 4.LocalStorage Process-----------------------------------------------------------------------
 let products = new Product_Method();
 
 function setLocalSorage() {
@@ -132,7 +131,7 @@ function getLocalStorage() {
 
 getLocalStorage() ; // gán lại vào mảng product = giá trị trong local storage
 
-//! 4.Add to cart--------------------------
+//! 5.Add to cart to LocalStorage---------------------------------------------------
 function addToCart(id) {
     var quantityOrder = 1
     callAPI_ViewProduct(id).then((result) => {
@@ -146,8 +145,6 @@ function addToCart(id) {
                 // console.log ("Empty Product:Insert New", sp);
                 products.insertProduct(sp);
                 setLocalSorage();
-                
-
             } 
             else {
                 var HaveId = products.arrayProduct.findIndex(function (sp) {
@@ -166,16 +163,13 @@ function addToCart(id) {
                     // console.log("spUpdate:",spUpdate);
                     products.updateProduct(spUpdate);
                     setLocalSorage();
-
                 } 
                 else {
                     // console.log ("Product Array: New Product");
                     products.insertProduct(sp);
                     setLocalSorage();
-
                 }
             }
-           
             TotalProductInCart();
         }
         else{
@@ -184,7 +178,7 @@ function addToCart(id) {
     });
 }
    
-//! 5. Total product in cart------------
+//! 6.Total product in cart----------------------------------------
 function TotalProductInCart()
 {
     let t = 0;
